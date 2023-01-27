@@ -2,6 +2,7 @@ package br.com.renato.cambly.domain;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -27,11 +28,11 @@ public class Agendamento {
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private LocalDate dataAgendamento;
-	private LocalDateTime horaAgendamento;
+	private LocalTime horaAgendamento;
 	@ManyToOne
-	@JoinColumn(name = "professor_id")
+	//@JoinColumn(name = "professor_id")
 	private Professor professor;
 	@ManyToOne
-	@JoinColumn(name = "estudante_id")
+	//@JoinColumn(name = "estudante_id")
 	private Estudante estudante;
 }

@@ -2,6 +2,7 @@ package br.com.renato.cambly.domain;
 
 import java.util.List;
 
+import br.com.renato.cambly.controller.dto.DadosCadastroEstudanteDto;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -24,10 +25,16 @@ public class Estudante {
 
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private Long nome;
+	private String nome;
 	private String cpf;
 	@Embedded
 	private Endereco endereco;
 	@OneToMany(mappedBy = "estudante")
 	private List<Agendamento> agendamentos;
+	
+	public Estudante(DadosCadastroEstudanteDto dadosCadastroEstudanteDto) {
+		this.cpf = dadosCadastroEstudanteDto.cpf();
+		this.nome = dadosCadastroEstudanteDto.nome();
+		this.endereco = new Endereco(dadosCadastroEstudanteDto.endereco());
+	}
 }
