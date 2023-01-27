@@ -4,8 +4,6 @@ import java.util.List;
 
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -16,21 +14,20 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Table(name = "professores")
+@Table(name = "estudantes")
 @Entity
-@Getter
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
+@Getter
 @EqualsAndHashCode(of="id")
-public class Professor {
+public class Estudante {
 
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String nome;
-	@Enumerated(EnumType.STRING)
-	private Sotaques sotaque;
-	@OneToMany(mappedBy = "professor")
-	private List<Agendamento> agendamentos;
+	private Long nome;
+	private String cpf;
 	@Embedded
 	private Endereco endereco;
+	@OneToMany(mappedBy = "estudante")
+	private List<Agendamento> agendamentos;
 }

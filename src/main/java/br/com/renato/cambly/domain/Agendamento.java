@@ -1,36 +1,37 @@
 package br.com.renato.cambly.domain;
 
-import java.util.List;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
-import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Table(name = "professores")
+
+@Table(name = "agendamentos")
 @Entity
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of="id")
-public class Professor {
+public class Agendamento {
 
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String nome;
-	@Enumerated(EnumType.STRING)
-	private Sotaques sotaque;
-	@OneToMany(mappedBy = "professor")
-	private List<Agendamento> agendamentos;
-	@Embedded
-	private Endereco endereco;
+	private LocalDate dataAgendamento;
+	private LocalDateTime horaAgendamento;
+	@ManyToOne
+	@JoinColumn(name = "professor_id")
+	private Professor professor;
+	@ManyToOne
+	@JoinColumn(name = "estudante_id")
+	private Estudante estudante;
 }
