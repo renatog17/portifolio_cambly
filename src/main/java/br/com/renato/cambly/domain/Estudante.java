@@ -2,6 +2,7 @@ package br.com.renato.cambly.domain;
 
 import java.util.List;
 
+import br.com.renato.cambly.controller.dto.DadosAtualizacaoEstudanteDto;
 import br.com.renato.cambly.controller.dto.DadosCadastroEstudanteDto;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
@@ -27,6 +28,9 @@ public class Estudante {
 	private Long id;
 	private String nome;
 	private String cpf;
+	private String email;
+	private String telefone;
+	private boolean ativo = true;
 	@Embedded
 	private Endereco endereco;
 	@OneToMany(mappedBy = "estudante")
@@ -36,5 +40,19 @@ public class Estudante {
 		this.cpf = dadosCadastroEstudanteDto.cpf();
 		this.nome = dadosCadastroEstudanteDto.nome();
 		this.endereco = new Endereco(dadosCadastroEstudanteDto.endereco());
+		this.email = dadosCadastroEstudanteDto.email();
+		this.telefone = dadosCadastroEstudanteDto.telefone();
+	}
+
+	public void atualizarInformacoes(DadosAtualizacaoEstudanteDto dadosAtualizacaoEstudanteDto) {
+		this.email = dadosAtualizacaoEstudanteDto.email();
+		this.telefone = dadosAtualizacaoEstudanteDto.telefone();
+		this.endereco.atualizarInformacoes(dadosAtualizacaoEstudanteDto.cidade(), dadosAtualizacaoEstudanteDto.pais());
+		
+	}
+
+	public void excluirLogicamente() {
+		this.ativo = false;
+		
 	}
 }

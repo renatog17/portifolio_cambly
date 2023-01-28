@@ -29,6 +29,9 @@ public class Professor {
 	private String nome;
 	@Enumerated(EnumType.STRING)
 	private Sotaques sotaque;
+	private String email;
+	private String telefone;
+	private boolean ativo = true;
 	@OneToMany(mappedBy = "professor")
 	private List<Agendamento> agendamentos;
 	@Embedded

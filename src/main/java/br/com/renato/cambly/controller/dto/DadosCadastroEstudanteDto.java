@@ -9,6 +9,10 @@ public record DadosCadastroEstudanteDto(
 		String nome,
 		@NotBlank
 		String cpf,
+		@NotBlank
+		String email,
+		@NotBlank
+		String telefone,
 		@Valid
 		@NotNull
 		DadosCadastroEnderecoDto endereco) {

@@ -34,4 +34,9 @@ public class Endereco {
 		// TODO Auto-generated constructor stub
 	}
 
+	public void atualizarInformacoes(String cidade, String pais) {
+		this.pais = pais;
+		this.cidade = cidade;
+	}
+
 }
