@@ -1,6 +1,6 @@
 package br.com.renato.cambly.domain;
 
-import br.com.renato.cambly.controller.dto.DadosCadastroEnderecoDto;
+import br.com.renato.cambly.controller.dto.endereco.DadosCadastroEnderecoDto;
 import jakarta.persistence.Embeddable;
 
 @Embeddable

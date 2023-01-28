@@ -1,5 +1,6 @@
-package br.com.renato.cambly.controller.dto;
+package br.com.renato.cambly.controller.dto.estudante;
 
+import br.com.renato.cambly.controller.dto.endereco.DadosCadastroEnderecoDto;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

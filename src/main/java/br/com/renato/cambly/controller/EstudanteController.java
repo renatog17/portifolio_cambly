@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import br.com.renato.cambly.controller.dto.DadosAtualizacaoEstudanteDto;
-import br.com.renato.cambly.controller.dto.DadosCadastroEstudanteDto;
-import br.com.renato.cambly.controller.dto.DadosDetalhamentoEstudanteDto;
+import br.com.renato.cambly.controller.dto.estudante.DadosAtualizacaoEstudanteDto;
+import br.com.renato.cambly.controller.dto.estudante.DadosCadastroEstudanteDto;
+import br.com.renato.cambly.controller.dto.estudante.DadosDetalhamentoEstudanteDto;
 import br.com.renato.cambly.domain.Estudante;
 import br.com.renato.cambly.repository.EstudanteRepository;
 import jakarta.transaction.Transactional;
@@ -32,8 +32,6 @@ public class EstudanteController {
 	public ResponseEntity<DadosDetalhamentoEstudanteDto> cadastrarEstudante(@RequestBody @Valid DadosCadastroEstudanteDto cadastroEstudanteDto, 
 			UriComponentsBuilder uriComponentsBuilder) {
 		Estudante estudante = new Estudante(cadastroEstudanteDto);
-		System.out.println(estudante.getTelefone());
-		System.out.println(estudante.getNome());
 		estudanteRepository.save(estudante);
 		var uri = uriComponentsBuilder.path("/estudante/{id}").buildAndExpand(estudante.getId()).toUri();
 		
@@ -56,7 +54,6 @@ public class EstudanteController {
 	public ResponseEntity<DadosDetalhamentoEstudanteDto> atualizarEstudante(@PathVariable Long id, @Valid @RequestBody DadosAtualizacaoEstudanteDto dadosAtualizacaoEstudanteDto){
 		System.out.println(id);
 		Estudante estudante = estudanteRepository.getReferenceById(id);
-		System.out.println(dadosAtualizacaoEstudanteDto.toString());
 		estudante.atualizarInformacoes(dadosAtualizacaoEstudanteDto);
 		estudanteRepository.save(estudante);
 		return ResponseEntity

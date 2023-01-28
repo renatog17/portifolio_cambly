@@ -2,8 +2,8 @@ package br.com.renato.cambly.domain;
 
 import java.util.List;
 
-import br.com.renato.cambly.controller.dto.DadosAtualizacaoEstudanteDto;
-import br.com.renato.cambly.controller.dto.DadosCadastroEstudanteDto;
+import br.com.renato.cambly.controller.dto.estudante.DadosAtualizacaoEstudanteDto;
+import br.com.renato.cambly.controller.dto.estudante.DadosCadastroEstudanteDto;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

@@ -1,4 +1,4 @@
-package br.com.renato.cambly.controller.dto;
+package br.com.renato.cambly.controller.dto.endereco;
 
 import jakarta.validation.constraints.NotBlank;
 
